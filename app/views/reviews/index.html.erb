@@ -1,0 +1,26 @@
+<h1>Book Reviews</h1>
+<p>Here are some book reviews by our amazing community.</p>
+
+<table>
+  <tr>
+    <th>Book Title</th>
+    <th>Reviewer</th>
+    <th>Positive Review?</th>
+    <th>Review Link</th>
+  </tr>
+
+<% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.book.title %></td>
+    <td><%= review.user.first_name + " " + review.user.last_name %></td>
+    <td>
+      <% if review.positive? %>
+      Positive!
+      <% else %>
+      Not so much
+      <% end %>
+    </td>
+    <td><%= link_to "View", review_path(review.id) %></td>
+  </tr>
+<% end %>
+</table>
